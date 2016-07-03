@@ -23,6 +23,22 @@ class Tag
     sql = "DELETE FROM tags"
     run(sql)
   end
+
+  def self.all()
+    sql = "SELECT * FROM tags"
+    return Tag.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    tag = SqlRunner.run_sql(sql)
+    result = tag.map { |product| Tag.new( product ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Tag.map_items(sql)
+    return result.first
+  end
  
 end
 
