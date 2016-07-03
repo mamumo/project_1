@@ -28,4 +28,21 @@ class Transaction
     sql = "DELETE FROM transactions"
     run(sql)
   end
+
+  ``
+  def self.all()
+    sql = "SELECT * FROM transactions"
+    return Transaction.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    transaction = SqlRunner.run_sql(sql)
+    result = transaction.map { |product| Transaction.new( product ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Transaction.map_items(sql)
+    return result.first
+  end
 end
