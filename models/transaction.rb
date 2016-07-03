@@ -1,5 +1,6 @@
 require( 'pg' )
 require( 'pry-byebug' )
+require_relative('../db/sql_runner')
 
 
 class Transaction
@@ -11,8 +12,20 @@ class Transaction
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
     @amount = options['amount'].to_i
-    @date = options['date']
+    @transaction_date = options['transaction_date']
     @description = options['description']
     @type = options['type']
+  end
+
+  def save()
+    sql = "INSERT INTO transactions (merchant_id, tag_id, amount, transaction_date, description, type) VALUES ('#{@merchant_id}', '#{@tag_id}', '#{@amount}', '#{@transaction_date}', '#{@description}','#{@type}') RETURNING *"
+    transaction = run(sql).first
+    result = Transaction.new( transaction )
+    return result
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM transactions"
+    run(sql)
   end
 end

@@ -15,8 +15,8 @@ CREATE TABLE merchants(
 
 CREATE TABLE transactions(
   id serial4 PRIMARY KEY,
-  merchant_id int4 references merchants(id),
-  tag_id int4 references tags(id),
+  merchant_id int4 references merchants(id) ON DELETE CASCADE,
+  tag_id int4 references tags(id) ON DELETE CASCADE,
   amount int4,
   transaction_date varchar(255),
   description varchar(255),

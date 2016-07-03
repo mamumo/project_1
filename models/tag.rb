@@ -1,5 +1,6 @@
 require( 'pg' )
-require( 'pry-byebug' )
+require( 'pry-byebug')
+require_relative('../db/sql_runner')
 
 
 class Tag
@@ -12,18 +13,16 @@ class Tag
   end
 
   def save()
-    db = PG.connect( { dbname: 'money_cashboard', host: 'localhost' } )
-    sql = "INSERT INTO tags ( 
-      name) 
-      VALUES (
-      '#{ @name }'
-      )"
-    db.exec(sql)
-    db.close
+    sql = "INSERT INTO tags (name) VALUES ('#{@name}') RETURNING *"
+    tag = run(sql).first
+    result = Tag.new( tag )
+    return result
   end
+
+  def self.delete_all()
+    sql = "DELETE FROM tags"
+    run(sql)
+  end
+ 
 end
 
-binding.pry
-
-tag1 = Tag.new( {"name" => "groceries"})
-tag2 = Tag.new( {"name" => "social"})
