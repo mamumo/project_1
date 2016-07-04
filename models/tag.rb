@@ -30,14 +30,21 @@ class Tag
   end
 
   def self.map_items(sql)
-    tag = SqlRunner.run_sql(sql)
-    result = tag.map { |product| Tag.new( product ) }
+    tags = run(sql)
+    result = tags.map { |product| Tag.new( product ) }
     return result
   end
 
   def self.map_item(sql)
     result = Tag.map_items(sql)
     return result.first
+  end
+
+  def transactions()
+    sql = "SELECT * FROM transactions WHERE tag_id = #{@id}"
+    transactions_data = run( sql )
+    transactions = transactions_data.map { |transaction_data| Transaction.new(transaction_data) }
+    return transactions
   end
  
 end

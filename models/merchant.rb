@@ -1,6 +1,7 @@
 require( 'pg' )
 require( 'pry-byebug' )
 require_relative('../db/sql_runner')
+require_relative('transaction')
 
 class Merchant
 
@@ -29,13 +30,20 @@ class Merchant
   end
 
   def self.map_items(sql)
-    merchant = SqlRunner.run_sql(sql)
-    result = merchant.map { |product| Merchant.new( product ) }
+    merchants = run(sql)
+    result = merchants.map { |product| Merchant.new( product ) }
     return result
   end
 
   def self.map_item(sql)
     result = Merchant.map_items(sql)
     return result.first
+  end
+
+  def transactions()
+    sql = "SELECT * FROM transactions WHERE merchant_id = #{@id}"
+    transactions_data = run( sql )
+    transactions = transactions_data.map { |transaction_data| Transaction.new(transaction_data) }
+    return transactions
   end
 end
