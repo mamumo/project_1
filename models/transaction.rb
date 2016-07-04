@@ -44,4 +44,22 @@ class Transaction
     result = Transaction.map_items(sql)
     return result.first
   end
+
+  def self.find( id )
+    transactions = run( "SELECT * FROM transactions WHERE id=#{id}" ) 
+    result = Transaction.new( transactions.first )
+    return result
+  end
+
+  def self.update( options )
+      run(  
+        "UPDATE transactions SET 
+          name='#{options['name']}'
+          WHERE id=#{options['id']}"
+      ) 
+  end
+
+  def self.destroy( id )
+    run( "DELETE FROM transactions WHERE id=#{id}" )
+  end
 end

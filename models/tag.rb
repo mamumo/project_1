@@ -46,6 +46,24 @@ class Tag
     transactions = transactions_data.map { |transaction_data| Transaction.new(transaction_data) }
     return transactions
   end
+
+  def self.find( id )
+    tags = run( "SELECT * FROM tags WHERE id=#{id}" ) 
+    result = Tag.new( tags.first )
+    return result
+  end
+
+  def self.update( options )
+      run(  
+        "UPDATE tags SET 
+          name='#{options['name']}'
+          WHERE id=#{options['id']}"
+      ) 
+  end
+
+  def self.destroy( id )
+    run( "DELETE FROM tags WHERE id=#{id}" )
+  end
  
 end
 

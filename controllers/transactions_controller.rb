@@ -1,33 +1,40 @@
+require( 'sinatra' )
+require( 'sinatra/contrib/all' )
+require_relative('../models/transaction')
+
 get '/transactions' do
-  #INDEX
- 
+  @transactions = Transaction.all
+  erb( :'transactions/index')
 end
 
-get '/transactions/new' do
+get '/transactions/:id' do
+  @transaction = Transaction.find(params[:id])
+  erb( :'transactions/show')
+end
   #NEW
  
-end
+# end
 
-post '/transactions' do
-  #CREATE
+# post '/transactions' do
+#   #CREATE
 
-end
+# end
 
-get '/transaction/:id' do
-  #SHOW
+# get '/transaction/:id' do
+#   #SHOW
   
-end
+# end
 
-get '/transactions/:id/edit' do
-  #EDIT
+# get '/transactions/:id/edit' do
+#   #EDIT
 
-end
+# end
 
-put '/transactions/:id' do
-  #UPDATE
+# put '/transactions/:id' do
+#   #UPDATE
  
-end
+# end
 
-delete '/transactions/:id' do
-  #DELETE
-end
+# delete '/transactions/:id' do
+#   #DELETE
+# end

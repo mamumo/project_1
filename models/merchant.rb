@@ -46,4 +46,22 @@ class Merchant
     transactions = transactions_data.map { |transaction_data| Transaction.new(transaction_data) }
     return transactions
   end
+
+  def self.find( id )
+    merchants = run( "SELECT * FROM merchants WHERE id=#{id}" ) 
+    result = Merchant.new( merchants.first )
+    return result
+  end
+
+  def self.update( options )
+      run(  
+        "UPDATE merchants SET 
+          name='#{options['name']}'
+          WHERE id=#{options['id']}"
+      ) 
+  end
+
+  def self.destroy( id )
+    run( "DELETE FROM merchants WHERE id=#{id}" )
+  end
 end
