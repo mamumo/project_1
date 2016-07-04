@@ -22,4 +22,20 @@ class Merchant
     sql = "DELETE FROM merchants"
     run(sql)
   end
+
+  def self.all()
+    sql = "SELECT * FROM merchants"
+    return Merchant.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    merchant = SqlRunner.run_sql(sql)
+    result = merchant.map { |product| Merchant.new( product ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Merchant.map_items(sql)
+    return result.first
+  end
 end

@@ -28,8 +28,7 @@ class Transaction
     sql = "DELETE FROM transactions"
     run(sql)
   end
-
-  ``
+  
   def self.all()
     sql = "SELECT * FROM transactions"
     return Transaction.map_items(sql)
