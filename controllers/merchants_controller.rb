@@ -14,6 +14,14 @@ get '/merchants/:id' do
 end
 
 
+
+# get '/albums/new' do
+#   #NEW
+#   @artists = Artist.all()
+#   erb( :'albums/new' )
+# end
+
+
 # post '/merchant' do
 #   @merchant = Merchant.new( params[:merchant_name])
 #   @merchant.save()

@@ -3,7 +3,7 @@
 <ul>
 <% @transactions.each do |transaction| %>
   <li>
-  <a href=<%="/transactions/#{transaction.id}"%>><%= transaction.description %></a>
+  <a href=<%="/transactions/#{transaction.id}"%>><%= transaction.type %></a>
   </li>
 <% end %>
 </ul>
