@@ -1,51 +1,45 @@
 <h1>Add new transaction here:</h1>
 
 
-<form action="/transaction" method="post">
+<form action="/transactions" method="post">
+  <label for="merchant">Merchant:</label>
+  <select name="merchant_id">
+  <% @merchants.each do |merchant|%>
+  <option value="<%=merchant.id%>"><%=merchant.name %></option>
+  <% end %>
+   
+    
+  </select>
+
+  <label for="tag">Tag:</label>
+  <select name="tag_id">
+  <% @tags.each do |tag|%>
+  <option value="<%=tag.id%>"><%=tag.name %></option>
+  <% end %>
+   
+    
+  </select>
+
   <label for="amount">Amount:</label>
   <input type="number" name="amount">
+
+
   <label for="transaction_date">Date:</label>
-  <input type="date" name="transaction_date">
+  <input type="date" name="transaction_date" value="date.today">
+
+
   <label for="description">What is it? (eg shoes :P):</label>
   <input type="text" name="description">
+
   <label for="type">Debit or Credit?:</label>
-  <input type="text" name="type">
+  <select name="type">
+    <option value="debit">Debit</option>
+    <option value="credit">Credit</option>
+  </select>
+ 
   
   <input type='submit' value="Add to Transactions">
 </form>
-<!-- 
-<h1> Track your spending here!</h1>
 
-<form action="/transaction" method="post">
-  <label for="">First Name:</label>
-  <input type="text" name="first_name">
-  <label for="last_name">Last Name:</label>
-  <input type="text" name="last_name"><br><br>
-
-  <label for="length_of_stay">How many nights do you want to stay?</label><br><br>
-  <select name="length_of_stay">
-    <option value="1">1 night</option>
-    <option value="2">2 nights</option>
-    <option value="3">3 nights</option>
-    <option value="4">4 nights</option>
-    <option value="5">5 nights</option><br>
-  </select><br><br>
-
-  <label for="check_in">What is your date of check in?</label><br><br>
-  <input type="date" name= "check_in"><br><br>
-
-
-
-
-  <label for="breakfast">Would you like to include breakfast?</label><br><br>
-  <input type="radio" name= "breakfast" value="yes">Aye<br>
-  <input type="radio" name= "breakfast" value="no">Naw<br><br>
-
-  <label for="bedroom_type">Please select room type:</label><br><br>
-  <input type="radio" name= "bedroom_type" value="single">Single<br>
-  <input type="radio" name= "bedroom_type" value="double">Double<br>
-  <input type="radio" name= "bedroom_type" value="twin">Twin<br><br>
-
-
-  <input type="submit" value="Confirm your booking!">
-</form> -->
+<%= erb(:'merchants/new')  %>
+<%= erb(:'tags/new')  %>

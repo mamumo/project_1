@@ -19,5 +19,6 @@ end
 post '/tags' do
   @tag = Tag.new(params)
   @tag.save()
-  erb( :'tags/create' )
+  @tags = Tag.all
+  erb( :'transactions/new' )
 end

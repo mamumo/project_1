@@ -59,6 +59,16 @@ class Transaction
       ) 
   end
 
+  def merchant_name()
+     sql = "SELECT name FROM merchants WHERE id = #{@merchant_id}"
+     return Merchant.map_item(sql).name
+   end
+
+   def tag_name()
+      sql = "SELECT name FROM tags WHERE id = #{@tag_id}"
+      return Tag.map_item(sql).name
+    end
+
   def self.destroy( id )
     run( "DELETE FROM transactions WHERE id=#{id}" )
   end

@@ -2,8 +2,15 @@
 
 <ul>
 <% @transactions.each do |transaction| %>
-  <li>
-  <a href=<%="/transactions/#{transaction.id}"%>><%= transaction.type %></a>
-  </li>
+  <p><%= transaction.amount %></p>
+  <p><%= transaction.type %></p>
+  <p><%= transaction.merchant_name %></p>
+
+
+ 
+
+
+
+  
 <% end %>
 </ul>

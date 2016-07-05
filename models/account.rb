@@ -13,6 +13,16 @@ class Account
   def total_transactions
     @transactions.reduce(0) { |sum, transaction| sum + transaction.amount }
   end
+
+  def total_expenditure_by_tag(tag_id)
+    total = 0
+    @transactions.each do |transaction|
+    total += transaction.amount if transaction.tag_id == tag_id
+  end
+  return total
+end
+
+
 end
 
 

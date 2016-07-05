@@ -22,19 +22,9 @@ end
 post '/merchants' do
   @merchant = Merchant.new(params)
   @merchant.save()
-  erb( :'merchants/create' )
+  @merchants = Merchant.all
+  erb( :'transactions/new' )
 end
 
 
 
-# get '/albums/new' do
-#   #NEW
-#   @artists = Artist.all()
-#   erb( :'albums/new' )
-# end
-
-
-# post '/merchant' do
-#   @merchant = Merchant.new( params[:merchant_name])
-#   @merchant.save()
-# erb( :create)
