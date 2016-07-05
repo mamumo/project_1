@@ -7,7 +7,17 @@ get '/tags' do
   erb( :'tags/index')
 end
 
+get '/tags/new' do
+  erb( :'tags/new')
+end
+
 get '/tags/:id' do
   @tags = Tag.find(params[:id])
   erb( :'tags/show')
+end
+
+post '/tags' do
+  @tag = Tag.new(params)
+  @tag.save()
+  erb( :'tags/create' )
 end

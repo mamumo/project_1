@@ -1,6 +1,15 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative('../models/transaction')
+require_relative('../models/tag')
+require_relative('../models/merchant')
+
+
+get '/transactions/new' do
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  erb( :'transactions/new')
+end
 
 get '/transactions' do
   @transactions = Transaction.all
@@ -10,6 +19,12 @@ end
 get '/transactions/:id' do
   @transaction = Transaction.find(params[:id])
   erb( :'transactions/show')
+end
+
+post '/transactions' do
+  @transaction = Transaction.new(params)
+  @transaction.save
+redirect to (:'transactions/index')
 end
   #NEW
  
