@@ -28,6 +28,11 @@ post '/transactions' do
   @transaction.save
   redirect to '/transactions'
 end
+
+# get '/transactions:id/edit' do
+#   @transaction = Transaction.find( params[:id] )
+#   erb( :'transactions/edit' )
+# end
   #NEW
  
 # end

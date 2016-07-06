@@ -8,9 +8,11 @@ require_relative('../models/tag')
 require_relative('../models/merchant')
 
 get '/account' do
-  @transactions =Transaction.all()
-  @merchants = Merchant.all()
+  query = params[:search]
+  query_type = params[:search_type]
+  @transactions = Transaction.all(query, query_type)
   @tags = Tag.all()
+  @merchants = Merchant.all
   @account = Account.new(@transactions)
   erb(:account)
 end

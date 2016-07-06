@@ -5,7 +5,7 @@ require_relative('../db/sql_runner')
 
 class Transaction
 
-  attr_reader( :id, :merchant_id, :tag_id, :amount, :date, :description, :type)
+  attr_reader( :id, :merchant_id, :tag_id, :amount, :transaction_date, :description, :type)
 
   def initialize( options )
     @id = options['id'].to_i
@@ -29,8 +29,17 @@ class Transaction
     run(sql)
   end
 
-  def self.all()
+  # def self.all()
+  #   sql = "SELECT * FROM transactions"
+  #   return Transaction.map_items(sql)
+  # end
+
+  def self.all(query = "", query_type = "")
+    query = query.to_s
+    query_type = query_type.to_s
     sql = "SELECT * FROM transactions"
+    sql = sql + " WHERE tag_id = #{query}" if query != "" && query_type == "tag"
+    sql = sql + " WHERE merchant_id = #{query}" if query != "" && query_type == "merchant"
     return Transaction.map_items(sql)
   end
 
@@ -59,14 +68,14 @@ class Transaction
       ) 
   end
 
-  def merchant_name()
+  def merchant()
      sql = "SELECT name FROM merchants WHERE id = #{@merchant_id}"
-     return Merchant.map_item(sql).name
+     return Merchant.map_item(sql)
    end
 
-   def tag_name()
+   def tag()
       sql = "SELECT name FROM tags WHERE id = #{@tag_id}"
-      return Tag.map_item(sql).name
+      return Tag.map_item(sql)
     end
 
   def self.destroy( id )

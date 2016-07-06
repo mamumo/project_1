@@ -2,7 +2,7 @@
 
 <ul>
 <% @transactions.each do |transaction| %>
-  <p><%= transaction.merchant_name %></p>
+  <p><%= transaction.merchant.name %></p>
   <p><%= transaction.amount %></p>
   <p><%= transaction.type %></p><hr>
 

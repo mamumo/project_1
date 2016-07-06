@@ -5,9 +5,10 @@ require_relative('transaction.rb')
 
 class Account
 
+  attr_reader(:transactions)
+
   def initialize( transactions )
    @transactions = transactions
-  
   end
 
   def total_transactions

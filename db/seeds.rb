@@ -27,3 +27,5 @@ transaction3 =  Transaction.new({'merchant_id' => m3.id, 'tag_id' => tag3.id, 'a
 t3 = transaction3.save
 
 
+binding.pry
+nil

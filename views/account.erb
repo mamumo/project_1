@@ -1,3 +1,40 @@
 <h2> The account </h2>
 
 <p>£<%= @account.total_transactions%></p>
+
+<% @account.transactions.each do |transaction|%>
+<%= transaction.transaction_date %>  <%= transaction.tag.name %><%= transaction.merchant.name %><%= transaction.amount %><br>
+
+<% end %>
+<!-- 
+<% @tags.each do |tag| %>
+
+  <%=  tag.name %> - <%= @account.total_expenditure_by_tag(tag.id)  %>
+
+<% end %> -->
+
+
+
+<form method="get">
+ <label for="search">Search by tag:</label>
+ <select name="search">
+ <option value=""></option>
+ <% @tags.each do |tag|%>
+ <option value="<%=tag.id%>"><%=tag.name %></option>
+ <% end %>
+ </select>
+ <input type="hidden" name="search_type" value="tag">
+ <input type="submit" value="search" >
+</form>
+
+<form method="get">
+ <label for="search">Search by merchant:</label>
+ <select name="search">
+ <option value=""></option>
+ <% @merchants.each do |merchant|%>
+ <option value="<%=merchant.id%>"><%=merchant.name %></option>
+ <% end %>
+ </select>
+ <input type="hidden" name="search_type" value="merchant">
+ <input type="submit" value="search">
+</form>
