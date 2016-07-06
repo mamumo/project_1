@@ -29,6 +29,11 @@ post '/transactions' do
   redirect to '/transactions'
 end
 
+# post '/transactions/:id/delete' do
+#   Transaction.destroy( params[:id] )
+#   redirect to('/transactions')
+# end
+
 # get '/transactions:id/edit' do
 #   @transaction = Transaction.find( params[:id] )
 #   erb( :'transactions/edit' )

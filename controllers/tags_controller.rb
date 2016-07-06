@@ -20,5 +20,5 @@ post '/tags' do
   @tag = Tag.new(params)
   @tag.save()
   @tags = Tag.all
-  erb( :'transactions/new' )
+  redirect to('transactions/new' )
 end

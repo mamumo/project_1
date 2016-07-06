@@ -23,8 +23,24 @@ post '/merchants' do
   @merchant = Merchant.new(params)
   @merchant.save()
   @merchants = Merchant.all
-  erb( :'transactions/new' )
+  redirect to('transactions/new' )
 end
+
+get '/merchants/:id/edit' do
+  @merchant = Merchant.find( params[:id] )
+  erb( :'merchants/edit' )
+end
+
+post '/merchants/:id' do
+  @merchant = Merchant.update( params )
+  redirect to ('/merchants')
+end
+
+post '/merchants/:id/delete' do
+  Merchant.destroy( params[:id] )
+  redirect to('/merchants')
+end
+
 
 
 
