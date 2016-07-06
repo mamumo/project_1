@@ -1,21 +1,22 @@
-<div class="overview">
+<div class="account">
 
-<h2> Overview </h2>
+<h2> all the spends </h2>
 
 <% @account.transactions.each do |transaction|%>
-Date: <%= transaction.transaction_date %><br> Retailer:  <%= transaction.merchant.name %><br>Description:  <%= transaction.tag.name %><br>Damage done: £<%= transaction.amount %><br><hr>
+<br> Retailer:  <%= transaction.merchant.name %><br>Description:  <%= transaction.tag.name %><br>Damage done: £<%= transaction.amount %><br>Date: <%= transaction.transaction_date %><hr>
 
 <% end %>
+
 
 <h3> Your total:</h3>
 
 <p>£<%= @account.total_transactions%></p><hr>
 
 
-<h3> Search for total transactions here:</h3>
+<h3> where do your pennies go? </h3>
 
 <form method="get">
- <label for="search">Search by tag:</label>
+ <label for="search">search by type:</label>
  <select name="search">
  <option value=""></option>
  <% @tags.each do |tag|%>
@@ -27,7 +28,7 @@ Date: <%= transaction.transaction_date %><br> Retailer:  <%= transaction.merchan
 </form>
 
 <form method="get">
- <label for="search">Search by merchant:</label>
+ <label for="search">search by merchant:</label>
  <select name="search">
  <option value=""></option>
  <% @merchants.each do |merchant|%>
