@@ -1,10 +1,14 @@
+<div class="overview">
+
 <h1>Overview of Transactions</h1>
 
 <ul>
 <% @transactions.each do |transaction| %>
   <p><%= transaction.merchant.name %></p>
-  <p><%= transaction.amount %></p>
+  <p>£<%= transaction.amount %></p>
   <p><%= transaction.type %></p><hr>
   
 <% end %>
 </ul>
+
+</div>

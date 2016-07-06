@@ -7,6 +7,7 @@ require_relative('../models/account')
 require_relative('../models/tag')
 require_relative('../models/merchant')
 
+
 get '/account' do
   query = params[:search]
   query_type = params[:search_type]

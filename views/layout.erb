@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Money CashBoard</title>
+  <title>Rainy Day</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
  <nav>
+  <div class="go_left">
+    <div class="logo">
+      <a href="/">Rainy Day</a>
+    </div>
+  </div>
+
+  <div class="go_right">
+
    <ul>
-     <li><a href="/merchants">Merchants</a> </li>
-     <li><a href="/transactions">All Transactions</a> </li>
-  <!--    <li><a href="/tags">Spending by Type</a> </li> -->
-   <!--   <li><a href="/merchants/new">New Merchant</a> </li> -->
-     <li><a href="/transactions/new">New Transaction</a> </li>
-   <!--   <li><a href="/tags/new">New Tag</a> </li> -->
      <li><a href="/account">Account</a> </li>
-
-
+     <li><a href="/merchants">Merchants</a> </li>
+     <li><a href="/transactions/new">New Transaction</a> </li>
+     <li><a href="/transactions">All Transactions</a> </li>
    </ul>
+   </div>
  </nav>
  <main>
  <%= yield %>
  </main> 
+ <footer>
+   Rainy Day Solutions &copy;2016
+ </footer>
 </body>  
 </html>
+
+
+    

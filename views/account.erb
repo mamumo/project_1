@@ -1,19 +1,18 @@
-<h2> The account </h2>
+<div class="overview">
 
-<p>£<%= @account.total_transactions%></p>
+<h2> Overview </h2>
 
 <% @account.transactions.each do |transaction|%>
-<%= transaction.transaction_date %>  <%= transaction.tag.name %><%= transaction.merchant.name %><%= transaction.amount %><br>
+Date: <%= transaction.transaction_date %><br> Retailer:  <%= transaction.merchant.name %><br>Description:  <%= transaction.tag.name %><br>Damage done: £<%= transaction.amount %><br><hr>
 
 <% end %>
-<!-- 
-<% @tags.each do |tag| %>
 
-  <%=  tag.name %> - <%= @account.total_expenditure_by_tag(tag.id)  %>
+<h3> Your total:</h3>
 
-<% end %> -->
+<p>£<%= @account.total_transactions%></p><hr>
 
 
+<h3> Search for total transactions here:</h3>
 
 <form method="get">
  <label for="search">Search by tag:</label>
@@ -38,3 +37,6 @@
  <input type="hidden" name="search_type" value="merchant">
  <input type="submit" value="search">
 </form>
+
+</div>
+
