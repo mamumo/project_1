@@ -8,6 +8,7 @@ html{
 
 .logo {
   color:white;
+  font-family: Courier, sans-serif;
   line-height:65px;
   margin-left:20px;
   font-size:20px;
@@ -17,8 +18,10 @@ html{
 
 .rainy_day{
   color:white;
+  font-family: Courier, sans-serif;
   margin-top:60px;
   font-weight:bold;
+  font-size:27px;
   display: inline-block;
   list-style: none;
   text-align:center;
@@ -53,8 +56,30 @@ html{
   margin-top:60px;
   font-weight:bold;
   display: inline-block;
+  font-family: Courier, sans-serif;
+  font-size:18px;
   list-style: none;
   text-align:center;
+}
+
+.merchants_list{
+  color:white;
+  text-decoration:none;
+  font-family: Courier, sans-serif;
+  
+}
+
+
+.delete_merchant{
+  color:white;
+  margin-top:60px;
+  font-weight:bold;
+  display: inline-block;
+  font-family: Courier, sans-serif;
+  font-size:18px;
+  list-style: none;
+  text-align:center;
+
 }
 
 .overview{
@@ -78,6 +103,8 @@ nav a {
   text-decoration: none;
   background-color: none;
   color: white;
+  font-family: Courier, sans-serif;
+  font-size:25px;
   margin: 0 10px;
   padding: 5px 15px;
 }
@@ -118,10 +145,10 @@ main {
 }
 
 footer{
-  float:right;
+  text-align:center;
   background-color: none;
   height: 40px;
-  position: fixed;
+  position:fixed;
   left:0px;
   bottom:0px;
   width: 100%;
