@@ -1,18 +1,18 @@
 <div class="new_transaction">
 
-<h1>Add new transaction here:</h1>
+<h1>add new spends here:</h1>
 
 <form action="/transactions" method="post">
-  <label for="merchant">Merchant:</label>
+  <label for="merchant">merchant:</label>
   <select name="merchant_id">
   <% @merchants.each do |merchant|%>
   <option value="<%=merchant.id%>"><%=merchant.name %></option>
   <% end %>
    
     
-  </select><br><br>
+  </select>
 
-  <label for="tag">Tag:</label>
+  <label for="tag">type:</label>
   <select name="tag_id">
   <% @tags.each do |tag|%>
   <option value="<%=tag.id%>"><%=tag.name %></option>
@@ -21,26 +21,26 @@
     
   </select><br><br>
 
-  <label for="amount">Amount:</label>
+  <label for="amount">amount:</label>
   <input type="number" name="amount"><br><br>
 
 
-  <label for="transaction_date">Date:</label>
+  <label for="transaction_date">date:</label>
   <input type="date" name="transaction_date" value="date.today"><br><br>
 
-  <label for="type">Debit or Credit?:</label>
+  <label for="type">debit or credit?:</label>
   <select name="type">
-    <option value="debit">Debit</option>
-    <option value="credit">Credit</option>
+    <option value="debit">debit</option>
+    <option value="credit">credit</option>
   </select><br><br>
  
   
-  <input type='submit' value="Add to Transactions">
-</form>
+  <input type='submit' value="add to your spends">
+</form><hr>
 
 
 
-<%= erb(:'merchants/new')  %>
+<%= erb(:'merchants/new')  %><hr>
 <%= erb(:'tags/new')  %>
 
 </div>

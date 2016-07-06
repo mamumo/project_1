@@ -122,6 +122,10 @@ a{
   font-size: 18px;
 }
 
+.total_spend{
+  font-weight:bold;
+}
+
 nav ul li {
   display: inline-block;
   list-style: none;
@@ -173,6 +177,10 @@ main ul li {
 
 main {
   margin: 10px;
+}
+
+label {
+  font-size:28px;
 }
 
 footer{

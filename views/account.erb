@@ -3,14 +3,16 @@
 <h2> all the spends </h2>
 
 <% @account.transactions.each do |transaction|%>
-<br> Retailer:  <%= transaction.merchant.name %><br>Description:  <%= transaction.tag.name %><br>Damage done: £<%= transaction.amount %><br>Date: <%= transaction.transaction_date %><hr>
+<br> retailer:  <%= transaction.merchant.name %><br><br>description:  <%= transaction.tag.name %><br><br>damage done: £<%= transaction.amount %><br><br><br>Date: <%= transaction.transaction_date %><hr>
 
 <% end %>
 
 
 <h3> Your total:</h3>
 
+<div class="total_spend">
 <p>£<%= @account.total_transactions%></p><hr>
+</div>
 
 
 <h3> where do your pennies go? </h3>
